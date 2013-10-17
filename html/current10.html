@@ -1,13 +1,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
     <head>
+        <meta http-equiv="refresh" content="10">
         <META http-equiv="Content-Style-Type" content="text/css">
         <title>VolleyScore.html</title>
         <LINK href="special.css" rel="stylesheet" type="text/css">
     </head>
 <body>
-    <p>Current Game</p><br>
-
+<img src="psd.jpg" alt="Smiley face" width="96" height="96">
+    <p0>Current Game</p0>
 <?php
 $file = fopen("match.txt","r");
 $fields = fgetcsv($file, 100, "\t");
@@ -28,35 +29,48 @@ $file = fopen("game3.txt","r");
 $fields = fgetcsv($file, 100, "\t");
 $g3h = $fields[0];
 $g3a = $fields[1];
+$file = fopen("game4.txt","r");
+$fields = fgetcsv($file, 100, "\t");
+$g4h = $fields[0];
+$g4a = $fields[1];
+$file = fopen("game5.txt","r");
+$fields = fgetcsv($file, 100, "\t");
+$g5h = $fields[0];
+$g5a = $fields[1];
 fclose($file);
 ?>
-<q>
-    <?php echo "Match start :" . $time ?></q><br>
+<p1><br>
+<?php echo "Match start :" . $time ?></p1><br>
 <table style="text-align: left; width: 600px; height: 90px;" border="1" cellpadding="2" cellspacing="2">
   <tbody>
     <tr>
-      <td style="vertical-align: top; width: 402px;">PARKLAND<br> </td>
+      <td style="vertical-align: top; width: 4002x;">PARKLAND<br> </td>
       <td style="vertical-align: top; width: 66px;"><?php echo $g1h?><br>  </td>
       <td style="vertical-align: top; width: 66px;"><?php echo $g2h?><br>  </td>
       <td style="vertical-align: top; width: 66px;"><?php echo $g3h?><br>  </td>
+      <td style="vertical-align: top; width: 66px;"><?php echo $g4h?><br>  </td>
+      <td style="vertical-align: top; width: 66px;"><?php echo $g5h?><br>  </td>
     </tr>
     <tr>
       <td style="vertical-align: top; width: 402px;"><?php echo $opponent?><br>  </td>
       <td style="vertical-align: top; width: 66px;"><?php echo $g1a?><br> </td>
       <td style="vertical-align: top; width: 66px;"><?php echo $g2a?><br> </td>
       <td style="vertical-align: top; width: 66px;"><?php echo $g3a?><br> </td>
+      <td style="vertical-align: top; width: 66px;"><?php echo $g4a?><br>  </td>
+      <td style="vertical-align: top; width: 66px;"><?php echo $g5a?><br>  </td>
     </tr>
   </tbody>
 </table>
+<br><p1>
+<?php date_default_timezone_set('America/New_York'); ?>
+page last updated :  <?php echo date('F jS, Y g:i:s'); ?>.</p1><br><br>
+<a href="archive.html">ARCHIVE PAGE</a>
 <br>
-<br>
+<br><p1>
 <?php
 $file = fopen("message.txt","r");
-$message = fread($file);
-?>
-message : <?php echo $message ?>
-<q>
-page last updated :  <?php echo date('F jS, Y g:i:s'); ?>.</q><br><br>
-<a href="archive.html">ARCHIVE PAGE</a>
+$message = trim(fgets($file));
+fclose($file);
+echo $message ?></p1>
 </body></html>
 
