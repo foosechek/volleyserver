@@ -1,7 +1,21 @@
 body{ background-color:#e0e0e0 ;} 
-p { color: orange; font: 48px Arial, sans-serif ;font-weight:900} 
-q { font: 20px Arial, sans-serif}
-body{
-    font: 36px Arial, sans-serif;
-    font-weight:bold
+p0
+{ 
+color: red;
+font-size: 48px; 
+font-family: Serif;
+font-weight:900;
+} 
+p1
+{
+color: black;
+font-size: 20px;
+font-family: Courier;
+font-weight:500;
+}
+body
+{
+font-size: 30px;
+font-family: Courier;
+font-weight:bold;
 }
