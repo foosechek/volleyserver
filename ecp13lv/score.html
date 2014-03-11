@@ -1,0 +1,21 @@
+<html>
+  <head>
+   <script type="text/javascript">
+      window.onload = setupRefresh;
+
+      function setupRefresh() {
+          setInterval("refreshFrame();", 15000);
+      }
+      function refreshFrame() {
+         parent.bottom_frame.location.reload();
+	 parent.message_frame.location.reload();
+      }
+  </script>
+  </head>
+  <frameset id="cntfrm" rows="250,50,*">
+	<frame name="top_frame" src="header.html" scrolling="no" frameborder="1" />
+	<frame name="message_frame" src="message.html" scrolling="no" frameborder="1" />
+	<frame  name="bottom_frame" scrolling="auto" src="current.html" />
+
+  </frameset>
+</html>
