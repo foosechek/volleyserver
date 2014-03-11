@@ -9,6 +9,10 @@ if(empty($_POST['id'])){
 } else if ($_POST['id'] == "START") {
     $opponent=$_POST['opponent'];
     $game=$_POST['game'];
+    $gameid = time();
+    $file = fopen("gameid.txt","w");
+    fprintf($file,"%s", $gameid);
+    fclose($file);
     if ($game == "1"){
         $today = date("F j, Y, g:i a");
         $file = fopen("match.txt","w");
@@ -54,11 +58,11 @@ if(empty($_POST['id'])){
     $g5a = $fields[1];
     fclose($file);
     $outfile = fopen("archive_temp.html", "w+");
-    fwrite($outfile,"<p1>Match start:" . $time ."</p1>\n");
+    fwrite($outfile,"<p2>Match start:" . $time ."</p2>\n");
     fwrite($outfile,"<table style=\"text-align: left; width: 600px; height: 60px;\" border=\"1\" cellpadding=\"2\" cellspacing=\"2\">\n");
     fwrite($outfile,"<tbody>\n");
     fwrite($outfile,"<tr>\n");
-    fwrite($outfile,"<td style=\"vertical-align: top; width: 402px;\">PARKLAND<br> </td>\n");
+    fwrite($outfile,"<td style=\"vertical-align: top; width: 402px;\">POWER 16s LV<br> </td>\n");
     fwrite($outfile,"<td style=\"vertical-align: top; width: 66px;\">" . $g1h . "<br>  </td>\"\n");
     fwrite($outfile,"<td style=\"vertical-align: top; width: 66px;\">" . $g2h . "<br>  </td>\"\n");
     fwrite($outfile,"<td style=\"vertical-align: top; width: 66px;\">" . $g3h . "<br>  </td>\n");
@@ -70,8 +74,8 @@ if(empty($_POST['id'])){
     fwrite($outfile,"<td style=\"vertical-align: top; width: 66px;\">" . $g1a . "<br> </td>\n");
     fwrite($outfile,"<td style=\"vertical-align: top; width: 66px;\">" . $g2a . "<br> </td>\n");
     fwrite($outfile,"<td style=\"vertical-align: top; width: 66px;\">" . $g3a . "<br> </td>\n");
-    fwrite($outfile,"<td style=\"vertical-align: top; width: 66px;\">" . $g4h . "<br>  </td>\n");
-    fwrite($outfile,"<td style=\"vertical-align: top; width: 66px;\">" . $g5h . "<br>  </td>\n");
+    fwrite($outfile,"<td style=\"vertical-align: top; width: 66px;\">" . $g4a . "<br>  </td>\n");
+    fwrite($outfile,"<td style=\"vertical-align: top; width: 66px;\">" . $g5a . "<br>  </td>\n");
     fwrite($outfile,"</tr>\n");
     fwrite($outfile,"</tbody>\n");
     fwrite($outfile,"</table>\n");
@@ -85,9 +89,14 @@ if(empty($_POST['id'])){
    $away=$_POST['away']; 
    $game=$_POST['game'];
    $filename = "game" . $game . ".txt"; 
+   $gameid = system('cat gameid.txt',$retval);
+   $gamefile = "gamelogs/game_" . $gameid . ".txt";
    $file = fopen($filename,"w");
+   $file2 = fopen($gamefile,"a+");
    fprintf($file,"%d\t%d",$home, $away);
+   fprintf($file2,"%d\t%d\n",$home, $away);
    fclose($file);    
+   fclose($file2);
 } else if ($_POST['id'] == "MESSAGE") {
    $message=$_POST['message'];
    $outfile = fopen("message.txt", "w+");

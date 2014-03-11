@@ -1,7 +1,7 @@
-body{ background-color:#e0e0e0 ;} 
+body{background-color:#a4a3a1;}
 p0
 { 
-color: red;
+color: #2949dc;
 font-size: 48px; 
 font-family: Serif;
 font-weight:900;
@@ -12,6 +12,13 @@ color: black;
 font-size: 20px;
 font-family: Courier;
 font-weight:500;
+}
+p2
+{
+color: black;
+font-size: 12px;
+font-family: Courier;
+font-weight:200;
 }
 body
 {
